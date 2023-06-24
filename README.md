@@ -74,7 +74,7 @@ I recommend keeping the top level folder "Nodejs-PostgreSQL-Sequelize-User-Api-m
 Open your favorite terminal and navigate to the root of the User API project.
 Use npm to install the node dependencies:
 
-```js
+```
 npm install
 ```
 
@@ -84,7 +84,7 @@ npm install
 
 Using the same terminal from above:
 
-```js
+```
 code .
 ```
 
@@ -127,7 +127,7 @@ This is a separate file from .env to represent multiple avenues of injecting dif
 
 From the terminal window enter the following command:
 
-```js
+```
 npm run start:dev
 ```
 
@@ -138,6 +138,9 @@ I am using git-bash (MINGW64) for this assessment.
 
 You will notice that all calls to the User api have a prefix of _api/v0_.
 This is just a design choice to allow future versions of the api to permit versioning.
+
+The requests are only examples.
+You will need to modify some examples based on what data you have in the database.
 
 ## Login to get token
 
@@ -233,6 +236,10 @@ Auth failure example: {"message": "Unauthorized", "statusCode": 401 }
 # How to use the user api using Postman
 
 Open the included postman.json file and import it into Postman.
+
+The requests are only examples.
+
+You will need to modify some examples based on what data you have in the database.
 
 Use the _Login to get token_ request and copy the resulting token for use in the other tests.
 
