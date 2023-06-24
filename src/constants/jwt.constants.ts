@@ -1,0 +1,4 @@
+export const jwtConstants = {
+  secret:
+    'USE A VAULT, ENVIRONMENT VARIABLE, OR CONFIGURATION SERVICE IN PRODUCTION.',
+};
