@@ -3,6 +3,12 @@ import { SEQUELIZE, DEVELOPMENT, TEST, PRODUCTION } from './constants';
 import { databaseConfig } from './database.config';
 import { User } from '../../models/user.entity';
 
+/**
+ * Default Database Provider by environment
+ * @date 6/24/2023
+ *
+ * @type {{}}
+ */
 export const databaseProviders = [
   {
     provide: SEQUELIZE,

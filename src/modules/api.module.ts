@@ -7,6 +7,14 @@ import { ApiController } from '../controllers/api.controller';
 import { ApiService } from '../services/api.service';
 import { UserModule } from './user.module';
 
+/**
+ * Api Module for Database, Authentication, Guards, Api Controller, Api Service
+ * @date 6/24/2023
+ *
+ * @export
+ * @class ApiModule
+ * @typedef {ApiModule}
+ */
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),

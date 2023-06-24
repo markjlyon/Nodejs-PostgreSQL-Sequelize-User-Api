@@ -3,6 +3,12 @@ import { IDatabaseConfig } from './interfaces/database.interface';
 
 dotenv.config();
 
+/**
+ * Database Config by environment
+ * @date 6/24/2023
+ *
+ * @type {IDatabaseConfig}
+ */
 export const databaseConfig: IDatabaseConfig = {
   development: {
     username: process.env.DB_USER,

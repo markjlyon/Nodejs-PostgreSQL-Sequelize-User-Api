@@ -8,6 +8,14 @@ import { jwtConstants } from '../constants/jwt.constants';
 
 dotenv.config();
 
+/**
+ * Authentication Module exposing Auth Controller, Auth Service, JWT configuration
+ * @date 6/24/2023
+ *
+ * @export
+ * @class AuthModule
+ * @typedef {AuthModule}
+ */
 @Module({
   imports: [
     UserModule,

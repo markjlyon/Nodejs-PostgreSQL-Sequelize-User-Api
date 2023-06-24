@@ -3,32 +3,80 @@ import { User } from '../models/user.entity';
 import { UserDto } from '../dto/user-dto';
 import { USER_REPOSITORY } from '../core/database/constants';
 
+/**
+ * bcrypt for password salt and hash
+ * @date 6/24/2023
+ *
+ * @type {*}
+ */
 const bcrypt = require('bcrypt');
 
+/**
+ * Base UserService
+ * @date 6/24/2023
+ *
+ * @export
+ * @class UserService
+ * @typedef {UserService}
+ */
 @Injectable()
 export class UserService {
+  /**
+   * Creates an instance of UserService.
+   * @date 6/24/2023
+   *
+   * @constructor
+   * @param {typeof User} userRepository
+   */
   constructor(
     @Inject(USER_REPOSITORY) private readonly userRepository: typeof User,
   ) {}
 
-  /* READ user for Auth */
+  /**
+   * Get the user by email for authorization
+   * @date 6/24/2023
+   *
+   * @async
+   * @param {string} email
+   * @returns {Promise<User>}
+   */
   async findOneByEmail(email: string): Promise<User> {
     return await this.userRepository.findOne({
       where: { email: email },
     });
   }
 
-  /* READ user list */
+  /**
+   * READ all users
+   * @date 6/24/2023
+   *
+   * @async
+   * @returns {unknown}
+   */
   async getUsers() {
     return await this.userRepository.findAll<User>();
   }
 
-  /* READ user by id */
+  /**
+   * READ one user by id
+   * @date 6/24/2023
+   *
+   * @async
+   * @param {number} id
+   * @returns {Promise<User>}
+   */
   async findOneById(id: number): Promise<User> {
     return await this.userRepository.findOne<User>({ where: { id } });
   }
 
-  /* CREATE user */
+  /**
+   * CREATE a new user
+   * @date 6/24/2023
+   *
+   * @async
+   * @param {UserDto} user
+   * @returns {Promise<User>}
+   */
   async createUser(user: UserDto): Promise<User> {
     ValidateUser(user);
     return await bcrypt
@@ -46,7 +94,14 @@ export class UserService {
       });
   }
 
-  /* UPDATE user */
+  /**
+   * UPDATE user by id
+   * @date 6/24/2023
+   *
+   * @async
+   * @param {UserDto} user
+   * @returns {unknown}
+   */
   async updateUser(user: UserDto) {
     ValidateUser(user);
     return await this.userRepository.update<User>(user, {
@@ -54,7 +109,14 @@ export class UserService {
     });
   }
 
-  /* DELETE user by id */
+  /**
+   * DELETE user by id
+   * @date 6/24/2023
+   *
+   * @async
+   * @param {number} id
+   * @returns {unknown}
+   */
   async deleteUser(id: number) {
     return await this.userRepository.destroy<User>({
       where: { id: id },
@@ -62,6 +124,13 @@ export class UserService {
   }
 }
 
+/**
+ * Validate the user email and password formats
+ * @date 6/24/2023
+ *
+ * @param {UserDto} user
+ * @returns {boolean}
+ */
 function ValidateUser(user: UserDto) {
   // Check if EMAIL exists and is valid
   if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(user.email))
