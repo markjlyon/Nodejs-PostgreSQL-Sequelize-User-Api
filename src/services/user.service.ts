@@ -31,15 +31,19 @@ export class UserService {
   /* CREATE user */
   async createUser(user: UserDto): Promise<User> {
     ValidateUser(user);
-    let hashword;
-    bcrypt.hash(user.password, process.env.SALT, function (err, hash) {
-      hashword = hash;
-    });
-    return await this.userRepository.create<User>({
-      email: user.email,
-      name: user.name,
-      password: hashword,
-    });
+    return await bcrypt
+      .hash(user.password, process.env.SALT)
+      .then((hash) => {
+        console.log('Hash ', hash);
+        return this.userRepository.create<User>({
+          email: user.email,
+          name: user.name,
+          password: hash,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   /* UPDATE user */
