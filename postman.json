@@ -1,0 +1,244 @@
+{
+	"info": {
+		"_postman_id": "f4af5d26-9f58-4d95-9e72-297bf5338813",
+		"name": "pafin Team",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "313033"
+	},
+	"item": [
+		{
+			"name": "Login to get token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"email\": \"alpha@email.com\", \"password\": \"Password1!\" }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/v0/auth/login",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v0",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Make call to /profile using token to verify JWT is working",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhbHBoYUBlbWFpbC5jb20iLCJ1c2VybmFtZSI6IkFscGhhIiwiaWF0IjoxNjg3NTk2MjYwLCJleHAiOjE2ODc1OTY1NjB9.m13_NFGTH9Y8Hh41488rMh6dhYcyn3JhS6Uk6AcfFSw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/api/v0/auth/profile",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v0",
+						"auth",
+						"profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Make call to READ ALL user records",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhbHBoYUBlbWFpbC5jb20iLCJ1c2VybmFtZSI6IkFscGhhIiwiaWF0IjoxNjg3NjAxNjg1LCJleHAiOjE2ODc2MDE5ODV9.1tMhEZlyjoIrw-mgotD6fEPsdvrEAu9VgVFUoMYEBPI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/api/v0/users/list",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v0",
+						"users",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Make call to READ user record",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhbHBoYUBlbWFpbC5jb20iLCJ1c2VybmFtZSI6IkFscGhhIiwiaWF0IjoxNjg3NjAxNjg1LCJleHAiOjE2ODc2MDE5ODV9.1tMhEZlyjoIrw-mgotD6fEPsdvrEAu9VgVFUoMYEBPI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/api/v0/users/1",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v0",
+						"users",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Make call to CREATE user record",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhbHBoYUBlbWFpbC5jb20iLCJ1c2VybmFtZSI6IkFscGhhIiwiaWF0IjoxNjg3NTk5MDkxLCJleHAiOjE2ODc1OTkzOTF9.pHXpSmb_EOC3AzsJFam2y36_HRPRhcf4bhopEMAmNXs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"email\": \"beta@test.com\", \"name\": \"Beta\", \"password\": \"TESTaPASSWORD#2\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v0/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v0",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Make call to UPDATE user record",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhbHBoYUBlbWFpbC5jb20iLCJ1c2VybmFtZSI6IkFscGhhIiwiaWF0IjoxNjg3NTk4OTE2LCJleHAiOjE2ODc1OTkyMTZ9.3cMeMfgI-jFRR4rTjMI1u_FkKyK8_i8kQD3FPcqNwO0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"2\",\r\n    \"name\": \"Beta\",\r\n    \"email\": \"beta@email.com\",\r\n    \"password\": \"Password1!\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v0/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v0",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Make call to DELETE user record",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhbHBoYUBlbWFpbC5jb20iLCJ1c2VybmFtZSI6IkFscGhhIiwiaWF0IjoxNjg3NjAxNjg1LCJleHAiOjE2ODc2MDE5ODV9.1tMhEZlyjoIrw-mgotD6fEPsdvrEAu9VgVFUoMYEBPI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/api/v0/users/7",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v0",
+						"users",
+						"7"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
