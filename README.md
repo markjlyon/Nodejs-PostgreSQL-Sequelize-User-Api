@@ -151,6 +151,7 @@ curl -X POST http://localhost:3000/api/v0/auth/login -d '{ "email": "alpha@email
 ```
 
 Success example: {"access_token": "<token>"}
+
 Auth failure example: {"message": "Unauthorized", "statusCode": 401 }
 
 Copy the resulting token for future calls. It has a default life time of 5 minutes, unless you changed it above.
@@ -165,6 +166,7 @@ curl http://localhost:3000/api/v0/auth/profile -H "Authorization: Bearer <token>
 ```
 
 Success example: {"sub": "alpha@email.com", "username": "Alpha", "iat": 1687500634, "exp": 1687500934}
+
 Auth failure example: {"message": "Unauthorized", "statusCode": 401 }
 
 There is no need to keep the results.
@@ -179,6 +181,7 @@ curl -X GET http://localhost:3000/api/v0/users/list -H "Authorization: Bearer <t
 ```
 
 Success example: [{"id": 1,"name": "Alpha","email": "alpha@email.com","password": "$2b$10$.ejuMyM.xmb.oU0yzl0QceBoSXT3Qaw9pLzqhk7mmNo8w9OXkmT9y","createdAt": null,"updatedAt": "2023-06-24"}]
+
 Auth failure example: {"message": "Unauthorized", "statusCode": 401 }
 
 ## Make call to CREATE user record
@@ -191,8 +194,11 @@ curl -X POST http://localhost:3000/api/v0/users -H "Authorization: Bearer <token
 ```
 
 Success example: {"id":9,"email":"beta@test.com","name":"Beta","password":"$2b$10$.ejuMyM.xmb.oU0yzl0QceRu.pagDPHwUMlUoboPS9WNIE7nhs3Uy","updatedAt":"2023-06-24","createdAt":"2023-06-24"}
+
 Auth failure example: {"message": "Unauthorized", "statusCode": 401 }
+
 Email failure example: "beta@emailcom" : {"statusCode":400,"message":"User EMAIL does not meet format requirements"}
+
 Password failure example: "TestaPassword" {"statusCode":400,"message":"User PASSWORD does not meet complexity requirements"}
 
 Create several new records so you can update and delete them in later tests.
@@ -207,6 +213,7 @@ curl -X GET http://localhost:3000/api/v0/users/1 -H "Authorization: Bearer <toke
 ```
 
 Success example: {"id":1,"name":"Alpha","email":"alpha@email.com","password":"$2b$10$.ejuMyM.xmb.oU0yzl0QceBoSXT3Qaw9pLzqhk7mmNo8w9OXkmT9y","createdAt":null,"updatedAt":"2023-06-24"}
+
 Auth failure example: {"message": "Unauthorized", "statusCode": 401 }
 
 ## Make call to UPDATE user record
@@ -219,6 +226,7 @@ curl -X PUT http://localhost:3000/api/v0/users -H "Authorization: Bearer <token>
 ```
 
 Success example: [1]
+
 Auth failure example: {"message": "Unauthorized", "statusCode": 401 }
 
 ## Make call to DELETE user record
@@ -231,6 +239,7 @@ curl -X DELETE http://localhost:3000/api/v0/users/6 -H "Authorization: Bearer <t
 ```
 
 Success example: 1
+
 Auth failure example: {"message": "Unauthorized", "statusCode": 401 }
 
 # How to use the user api using Postman
